@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HEALTH-360 | Healthcare Analytics</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        <body> {
+            font-family: Arial, sans-serif;
+            background: #f4f9fc;
+            color: #183047;
+        }
+
+        nav {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #087eaa;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #183047;
+            margin-left: 22px;
+            font-weight: 600;
+        }
+
+        .hero {
+            padding: 100px 8%;
+            background: linear-gradient(120deg, #e1f5fc, #f5fbff);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: bold;
+            color: #123c59;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #0796c6;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #526879;
+            margin-bottom: 28px;
+        }
+
+        .btn-main {
+            background: #078bb8;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .hero-box {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+            min-width: 260px;
+        }
+
+        .hero-box h2 {
+            color: #078bb8;
+            font-size: 25px;
+        }
+
+        section {
+            padding: 75px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            color: #123c59;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #637889;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .info-card h3 {
+            color: #078bb8;
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-section {
+            background: #e8f5fa;
+            text-align: center;
+        }
+
+        footer {
+            background: #123c59;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media(max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 6px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <style>
+
+/* General Responsive Design */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* All Sections */
+
+section {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+/* Responsive Headings */
+
+h1 {
+    font-size: clamp(28px, 5vw, 48px);
+}
+
+h2 {
+    font-size: clamp(24px, 4vw, 36px);
+}
+
+/* Dashboard Responsive */
+
+iframe {
+    max-width: 100%;
+}
+
+/* Tablet View */
+
+@media screen and (max-width: 768px) {
+
+    section {
+        padding: 40px 5%;
+    }
+
+    .insights-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+}
+
+/* Mobile View */
+
+@media screen and (max-width: 600px) {
+
+    section {
+        padding: 35px 5%;
+    }
+
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .insight-card {
+        padding: 22px;
+    }
+
+    .insight-card p {
+        min-height: auto;
+    }
+
+    iframe {
+        width: 100%;
+        height: 550px;
+    }
+
+    button, a {
+        max-width: 100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">HEALTH-360</div>
+
+        <div>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#insights">Health Insights</a>
+            <a href="#dashboard">Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <div class="hero" id="home">
+
+        <div class="hero-content">
+            <h1>
+                Smarter Healthcare<br>
+                Through <span>Data Analytics</span>
+            </h1>
+
+            <p>
+                Welcome to HEALTH-360, a healthcare analytics project
+                designed to explore health patterns, understand disease
+                risks and transform healthcare data into meaningful insights.
+            </p>
+
+            <a href="https://public.tableau.com/views/HEALTH-360HEALTHCAREANALYTICSRISKFACTORINSIGHTSBYMAHIJAIN/HEALTH360DASHBOARD?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+            target="_blank"
+            class="btn-main">
+                Explore Dashboard →
+            </a>
+        </div>
+
+        <div class="hero-box">
+            <h2>HEALTH-360</h2>
+            <p>Healthcare Analytics & Risk Factor Insights</p>
+            <hr>
+            <p>Explore healthcare data through interactive visualizations
+            and meaningful analysis.</p>
+        </div>
+
+    </div>
+
+    <!-- About Section -->
+    <section id="about" style="padding:70px 8%; background:#f4f8fc;">
+
+    <div style="text-align:center; margin-bottom:45px;">
+        <h2 style="color:#183b66; font-size:32px;">
+            About HEALTH-360
+        </h2>
+
+        <p style="color:#64748b;">
+            Understanding healthcare data for better insights.
+        </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;">
+
+        <div>
+            <h3 style="color:#3285b8;">Project Overview</h3>
+            <p>
+                HEALTH-360 is a healthcare analytics project designed
+                to explore health-related data, identify patterns,
+                and present meaningful insights through interactive
+                visualizations and dashboards.
+            </p>
+        </div>
+
+        <div>
+            <h3 style="color:#3285b8;">Our Vision</h3>
+            <p>
+                To make complex healthcare information easier to
+                understand through data analysis and visualization.
+            </p>
+        </div>
+
+        <div>
+            <h3 style="color:#3285b8;">Our Objective</h3>
+            <p>
+                To analyze different health conditions and risk factors
+                using data analytics and interactive dashboards.
+            </p>
+        </div>
+
+        <div>
+            <h3 style="color:#3285b8;">Key Health Factors</h3>
+            <p>
+                The project explores factors related to Diabetes,
+                Heart Disease, Blood Pressure, Bmi,Fatigue,Age,Lifestyle factors(Alcohol and Smoking).
+            </p>
+        </div>
+
+    </div>
+</section>
+    </section>
+
+    <!-- Health Insights -->
+    <!-- HEALTH INSIGHTS SECTION -->
+
+<section id="insights" style="padding:70px 6%; background:#f4f8fc;">
+
+    <div style="text-align:center; margin-bottom:45px;">
+
+        <h2 style="font-size:32px; color:#183b66;">
+            Health Insights
+        </h2>
+
+        <p style="color:#64748b; font-size:16px;">
+            Explore healthcare patterns and risk factor analysis
+            through interactive data visualization.
+        </p>
+
+    </div>
+
+    <div class="insights-grid">
+
+        <!-- Diabetes Card -->
+        <div class="insight-card">
+            <div class="insight-icon">🩸</div>
+            <h3>Diabetes Analysis</h3>
+            <p>
+                Explore diabetes-related data, health patterns
+                and associated risk factors.
+            </p>
+            <a href="#dashboard" class="explore-btn">
+                Explore Dashboard →
+            </a>
+        </div>
+
+        <!-- Heart Disease Card -->
+        <div class="insight-card">
+            <div class="insight-icon">❤️</div>
+            <h3>Heart Disease Analysis</h3>
+            <p>
+                Understand heart disease patterns and
+                related health indicators.
+            </p>
+            <a href="#dashboard" class="explore-btn">
+                Explore Dashboard →
+            </a>
+        </div>
+
+        <!-- Blood Pressure Card -->
+        <div class="insight-card">
+            <div class="insight-icon">🩺</div>
+            <h3>Blood Pressure Analysis</h3>
+            <p>
+                Explore blood pressure readings and
+                related health trends.
+            </p>
+            <a href="#dashboard" class="explore-btn">
+                Explore Dashboard →
+            </a>
+        </div>
+
+        <!-- Stroke Card -->
+        <div class="insight-card">
+            <div class="insight-icon">🧠</div>
+            <h3>Stroke Analysis</h3>
+            <p>
+                Analyze stroke-related data and
+                associated risk factors.
+            </p>
+            <a href="#dashboard" class="explore-btn">
+                Explore Dashboard →
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.insight-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.insight-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.insight-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.insight-card h3 {
+    color: #183b66;
+    margin-bottom: 12px;
+}
+
+.insight-card p {
+    color: #64748b;
+    line-height: 1.6;
+    min-height: 75px;
+}
+
+.explore-btn {
+    display: inline-block;
+    background: #3285b8;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.explore-btn:hover {
+    background: #183b66;
+}
+
+@media(max-width:600px) {
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+    
+    <!-- Dashboard Preview -->
+<!-- Interactive Tableau Dashboard -->
+<section id="dashboard" style="padding: 50px 5%; text-align: center;">
+
+    <h2>HEALTH-360 Interactive Dashboard</h2>
+
+    <p>Healthcare Analytics & Risk Factor Insights</p>
+
+    <div style="width:100%; height:750px; margin-top:25px;">
+
+        <iframe
+            src="https://public.tableau.com/views/HEALTH-360HEALTHCAREANALYTICSRISKFACTORINSIGHTSBYMAHIJAIN/HEALTH360DASHBOARD?:showVizHome=no&:embed=true"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+    <br>
+
+    <a href="https://public.tableau.com/views/HEALTH-360HEALTHCAREANALYTICSRISKFACTORINSIGHTSBYMAHIJAIN/HEALTH360DASHBOARD"
+       target="_blank">
+       Open Dashboard in Tableau
+    </a>
+
+</section>
+
+</section>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h4>HEALTH-360</h4>
+        <p>Healthcare Analytics & Risk Factor Insights</p>
+        <p>Student Project | 2026</p>
+    </footer>
+
+</body>
+</html>
